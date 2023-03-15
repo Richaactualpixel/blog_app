@@ -1,0 +1,521 @@
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20230315084928)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230315084928"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-15 08:49:49.180302"], ["updated_at", "2023-03-15 08:49:49.180302"]]
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAuthenticationTokenToUsers (20230315085006)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" varchar(30)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230315085006"]]
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 14:24:36 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `skip_before_filter' for Api::V1::RegistrationsController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/api/v1/registrations_controller.rb:3:in `<class:RegistrationsController>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 14:25:07 +0530
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/api/v1/registrations_controller.rb:3:in `<class:RegistrationsController>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 14:29:14 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 14:30:42 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+NoMethodError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 14:32:12 +0530
+  
+NoMethodError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:3:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 14:33:08 +0530
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "xS6LMqyn6eR4uB8napz2"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "abc@example.com"], ["encrypted_password", "$2a$12$cx.iStHWWWftzMtQ1Q0ReO3cUPRhUtG8AtUJi4et0G/DOJoIxfQPS"], ["reset_password_token", nil], ["reset_password_sent_at", nil], ["remember_created_at", nil], ["created_at", "2023-03-15 09:03:08.580047"], ["updated_at", "2023-03-15 09:03:08.580047"], ["authentication_token", "xS6LMqyn6eR4uB8napz2"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 200 OK in 245ms (Views: 0.3ms | ActiveRecord: 11.1ms | Allocations: 45889)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:36:31 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (Allocations: 417)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: sign_in):
+  
+app/controllers/api/v1/sessions_controller.rb:24:in `sign_in_params'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:38:44 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (Allocations: 395)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: sign_in):
+  
+app/controllers/api/v1/sessions_controller.rb:24:in `sign_in_params'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:39:01 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:28:in `load_user'
+Completed 500 Internal Server Error in 222ms (ActiveRecord: 0.4ms | Allocations: 6910)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:39:35 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (Allocations: 395)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: sign_in):
+  
+app/controllers/api/v1/sessions_controller.rb:25:in `sign_in_params'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:41:49 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 501)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: sign_in):
+  
+app/controllers/api/v1/sessions_controller.rb:25:in `sign_in_params'
+Started GET "/api/v1/sign_in" for ::1 at 2023-03-15 14:42:43 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/sign_in"):
+  
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:42:50 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 257)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: sign_in):
+  
+app/controllers/api/v1/sessions_controller.rb:25:in `sign_in_params'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:43:30 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:29:in `load_user'
+Completed 500 Internal Server Error in 230ms (ActiveRecord: 0.5ms | Allocations: 42441)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:46:15 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:29:in `load_user'
+Completed 500 Internal Server Error in 243ms (ActiveRecord: 0.4ms | Allocations: 43668)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 14:52:04 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:29:in `load_user'
+Completed 500 Internal Server Error in 216ms (ActiveRecord: 0.1ms | Allocations: 1250)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 15:00:44 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 15:02:38 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/sessions_controller.rb:1:in `<main>'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 15:50:52 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 15:56:46 +0530
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 15:56:56 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 15:59:30 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 15:59:51 +0530
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 15:59:56 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 16:00:19 +0530
+  
+RuntimeError (Invalid option key: session_store=):
+  
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/api/v1/registrations_controller.rb:1:in `<main>'
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 16:00:24 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 255ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 43943)
+
+
+Started POST "/api/v1/sign_up" for ::1 at 2023-03-15 16:00:31 +0530
+Processing by Api::V1::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"abc1@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc1@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Count (7.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "_bSHd1CuryZmA1Gv3Rrn"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "abc1@example.com"], ["encrypted_password", "$2a$12$f3SebfHfg4MQ..aNPgjVh.sUekAiHhdwLNEM5L5H5RHWw1KNOkMOq"], ["reset_password_token", nil], ["reset_password_sent_at", nil], ["remember_created_at", nil], ["created_at", "2023-03-15 10:30:32.181437"], ["updated_at", "2023-03-15 10:30:32.181437"], ["authentication_token", "_bSHd1CuryZmA1Gv3Rrn"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:7:in `create'
+Completed 200 OK in 233ms (Views: 0.3ms | ActiveRecord: 11.2ms | Allocations: 4161)
+
+
+Started POST "/api/v1/sign_in" for ::1 at 2023-03-15 16:00:40 +0530
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"abc@example.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "abc@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:29:in `load_user'
+Completed 200 OK in 221ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 3016)
+
+
+Started POST "/create_post" for ::1 at 2023-03-15 16:04:18 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/create_post"):
+  
+Started POST "/api/v1/create_post" for ::1 at 2023-03-15 16:04:34 +0530
+  
+NameError (undefined local variable or method `byebug' for Api::V1::PostsController:Class):
+  
+app/controllers/api/v1/posts_controller.rb:8:in `<class:PostsController>'
+app/controllers/api/v1/posts_controller.rb:1:in `<main>'
+Started POST "/api/v1/create_post" for ::1 at 2023-03-15 16:04:42 +0530
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"title"=>"post", "content"=>"post 12132", "post"=>{"title"=>"post", "content"=>"post 12132"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 8173)
+
+
+  
+NoMethodError (undefined method `posts' for #<User id: 1, email: "abc@example.com", created_at: "2023-03-15 09:03:08.580047000 +0000", updated_at: "2023-03-15 09:03:08.580047000 +0000", authentication_token: "xS6LMqyn6eR4uB8napz2">):
+  
+app/controllers/api/v1/posts_controller.rb:10:in `create'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20230315103803)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230315103803"]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/create_post" for ::1 at 2023-03-15 16:10:32 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/create_post"):
+  
+Started POST "/api/v1/create_post" for ::1 at 2023-03-15 16:10:52 +0530
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"title"=>"post", "content"=>"post 12132", "post"=>{"title"=>"post"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "post"], ["body", nil], ["user_id", 1], ["created_at", "2023-03-15 10:40:52.183873"], ["updated_at", "2023-03-15 10:40:52.183873"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+Completed 201 Created in 33ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 65774)
+
+
+Started POST "/api/v1/create_post" for ::1 at 2023-03-15 16:10:59 +0530
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"title"=>"post", "body"=>"post 12132", "post"=>{"title"=>"post", "body"=>"post 12132"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :body. Context: { controller: Api::V1::PostsController, action: create, request: #<ActionDispatch::Request:0x00007fb26c04b638>, params: {"title"=>"post", "body"=>"post 12132", "format"=>:json, "controller"=>"api/v1/posts", "action"=>"create", "post"=>{"title"=>"post", "body"=>"post 12132"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "post"], ["body", nil], ["user_id", 1], ["created_at", "2023-03-15 10:40:59.709233"], ["updated_at", "2023-03-15 10:40:59.709233"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+Completed 201 Created in 16ms (Views: 0.2ms | ActiveRecord: 10.6ms | Allocations: 3457)
+
+
+Started POST "/api/v1/create_post" for ::1 at 2023-03-15 16:11:23 +0530
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"title"=>"post", "body"=>"post 12132", "post"=>{"title"=>"post", "body"=>"post 12132"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "post"], ["body", "post 12132"], ["user_id", 1], ["created_at", "2023-03-15 10:41:23.874444"], ["updated_at", "2023-03-15 10:41:23.874444"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+Completed 201 Created in 11ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 9201)
+
+
+Started GET "/api/v1/get_posts" for ::1 at 2023-03-15 16:12:45 +0530
+Processing by Api::V1::PostsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 3.0ms | ActiveRecord: 0.8ms | Allocations: 10792)
+
+
+Started GET "/api/v1/posts" for ::1 at 2023-03-15 16:24:36 +0530
+Processing by Api::V1::PostsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:6:in `index'
+Completed 200 OK in 9ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 9771)
+
+
+Started POST "/api/v1/posts" for ::1 at 2023-03-15 16:25:38 +0530
+Processing by Api::V1::PostsController#create as JSON
+  Parameters: {"title"=>"richa", "body"=>"thaakkar 12132", "post"=>{"title"=>"richa", "body"=>"thaakkar 12132"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "richa"], ["body", "thaakkar 12132"], ["user_id", 1], ["created_at", "2023-03-15 10:55:38.196605"], ["updated_at", "2023-03-15 10:55:38.196605"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:12:in `create'
+Completed 201 Created in 18ms (Views: 0.3ms | ActiveRecord: 14.2ms | Allocations: 3473)
+
+
+Started GET "/api/v1/posts/1" for ::1 at 2023-03-15 16:27:11 +0530
+Processing by Api::V1::PostsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:20:in `show'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 2125)
+
+
+Started PUT "/api/v1/posts" for ::1 at 2023-03-15 16:29:30 +0530
+  
+ActionController::RoutingError (No route matches [PUT] "/api/v1/posts"):
+  
+Started PUT "/api/v1/posts/1" for ::1 at 2023-03-15 16:29:35 +0530
+Processing by Api::V1::PostsController#update as JSON
+  Parameters: {"id"=>"1", "title"=>"richie", "body"=>"rich", "post"=>{"id"=>"1", "title"=>"richie", "body"=>"rich"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `update'
+[31mUnpermitted parameter: :id. Context: { controller: Api::V1::PostsController, action: update, request: #<ActionDispatch::Request:0x00007fb284f07830>, params: {"id"=>"1", "title"=>"richie", "body"=>"rich", "format"=>:json, "controller"=>"api/v1/posts", "action"=>"update", "post"=>{"id"=>"1", "title"=>"richie", "body"=>"rich"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `update'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "title" = ?, "body" = ?, "updated_at" = ? WHERE "posts"."id" = ?[0m  [["title", "richie"], ["body", "rich"], ["updated_at", "2023-03-15 10:59:35.529970"], ["id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `update'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 11.4ms | Allocations: 3961)
+
+
+Started DELETE "/api/v1/posts/1" for ::1 at 2023-03-15 16:30:04 +0530
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `destroy'
+  [1m[36mPost Destroy (0.1ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (10.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:35:in `destroy'
+Completed 204 No Content in 14ms (ActiveRecord: 11.1ms | Allocations: 3254)
+
+
+Started DELETE "/api/v1/posts/1" for ::1 at 2023-03-15 16:30:50 +0530
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.8ms | Allocations: 8831)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=1 [WHERE "posts"."user_id" = ?]):
+  
+app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Started DELETE "/api/v1/posts/1" for ::1 at 2023-03-15 16:32:12 +0530
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Completed 404 Not Found in 7ms (ActiveRecord: 0.7ms | Allocations: 8737)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=1 [WHERE "posts"."user_id" = ?]):
+  
+app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Started DELETE "/api/v1/posts/1" for ::1 at 2023-03-15 16:32:14 +0530
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms | Allocations: 2046)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=1 [WHERE "posts"."user_id" = ?]):
+  
+app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Started DELETE "/api/v1/posts/1" for ::1 at 2023-03-15 16:32:55 +0530
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Completed 404 Not Found in 8ms (ActiveRecord: 0.8ms | Allocations: 8735)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=1 [WHERE "posts"."user_id" = ?]):
+  
+app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+Started DELETE "/api/v1/posts/2" for ::1 at 2023-03-15 16:33:20 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:38:in `destroy'
+  [1m[36mPost Destroy (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:38:in `destroy'
+Completed 200 OK in 48ms (Views: 0.1ms | ActiveRecord: 11.1ms | Allocations: 65802)
+
+
+Started GET "/api/v1/posts" for ::1 at 2023-03-15 16:33:56 +0530
+Processing by Api::V1::PostsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:6:in `index'
+Completed 200 OK in 10ms (Views: 2.6ms | ActiveRecord: 0.8ms | Allocations: 10747)
+
+
+Started DELETE "/api/v1/posts/3" for ::1 at 2023-03-15 16:36:11 +0530
+Processing by Api::V1::PostsController#destroy as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:36:in `destroy'
+  [1m[36mPost Destroy (0.1ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/api/v1/posts_controller.rb:36:in `destroy'
+  [1m[36mTRANSACTION (12.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:36:in `destroy'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 12.9ms | Allocations: 3480)
+
+
