@@ -9,8 +9,6 @@ Rails.application.routes.draw do
       end
 
       resources :posts
-      # post "create_post", to: "posts#create"
-      # get "get_posts", to: "posts#index"
     end
   end
 end
